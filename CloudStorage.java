@@ -1,6 +1,4 @@
 /*CloudStorage short api by skyrideraj*/
-package com.grayroutes.utilities;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -34,9 +32,9 @@ public class CloudStorage {
 	 * these are some important credentials which need not be hardcoded and can
 	 * be fetched using a properties file or something
 	 */
-	private static final String PROJECT_ID_PROPERTY = "222754369537";
-	private static final String APPLICATION_NAME_PROPERTY = "GrayDrop";
-	private static final String ACCOUNT_ID_PROPERTY = "222754369537@developer.gserviceaccount.com";
+	private static final String PROJECT_ID_PROPERTY = "PROJECT_ID";
+	private static final String APPLICATION_NAME_PROPERTY = "APPNAME";
+	private static final String ACCOUNT_ID_PROPERTY = "ACCOUNT_ID";
 
 	/**
 	 * Uploads a file to a bucket. Filename and content type will be based on
@@ -60,7 +58,7 @@ public class CloudStorage {
 		list.add(new ObjectAccessControl().setEntity("allUsers").setRole(
 				"READER"));
 		list.add(new ObjectAccessControl()
-				.setEntity("user-omkar@grayroutes.in").setRole("OWNER"));
+				.setEntity("useremail").setRole("OWNER"));
 
 		object.setAcl(list);
 
@@ -208,7 +206,7 @@ public class CloudStorage {
 		String p12Password = "notasecret";
 		KeyStore keystore = KeyStore.getInstance("PKCS12");
 		keystore.load(CloudStorage.class
-				.getResourceAsStream("/com/grayroutes/utilities/keyfile.p12"),
+				.getResourceAsStream("/com/example/utilities/keyfile.p12"),
 				p12Password.toCharArray());
 		PrivateKey key = (PrivateKey) keystore.getKey("privatekey",
 				p12Password.toCharArray());
